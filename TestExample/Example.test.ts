@@ -5,7 +5,7 @@
  * 3. Built-in test fixtures with Deno.test().
  */
 
-import { assertEquals, assertNotEquals } from "https://deno.land/std/testing/asserts.ts";
+import { assertEquals, assertNotEquals } from "https://deno.land/std@0.61.0/testing/asserts.ts";
 
 // Short hand notation of writing a test
 
