@@ -38,7 +38,7 @@ Deno.test({
     name: "ops leak",
     sanitizeOps: false,
     fn() {
-        setTimeout(console.log, 10000);
+        setTimeout(log.info, 10000);
     },
 });
 

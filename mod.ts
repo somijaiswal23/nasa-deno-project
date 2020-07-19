@@ -1,3 +1,4 @@
+import * as log from "https://deno.land/std@0.61.0/log/mod.ts";
 import { Application, send } from "https://deno.land/x/oak@v5.0.0/mod.ts";
 
 const app = new Application();
@@ -6,7 +7,7 @@ const PORT = 8000;
 app.use(async  (ctx, next) => {
     await next();
     const time = ctx.response.headers.get("X-Response-Time");
-    console.log(`${ctx.request.method} ${ctx.request.url}: ${time}`);
+    log.info(`${ctx.request.method} ${ctx.request.url}: ${time}`);
 });
 
 app.use(async (ctx, next) => {
@@ -46,6 +47,7 @@ app.use(async (ctx, next) => {
 });
 
 if(import.meta.main) {
+    log.info(`Starting server on port ${PORT}...`)
     await app.listen({
         port: PORT,
     });
