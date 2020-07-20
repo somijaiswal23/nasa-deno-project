@@ -53,8 +53,25 @@ export function getAll() {
 }
 
 export function getOne(id: number) {
-    if(launches.has(id)) {
-        return launches.get(id);
-    }
-    return null;
+  if(launches.has(id)) {
+    return launches.get(id);
+  } 
+  return null;
+}
+
+export function addOne(data: Launch) {
+  launches.set(data.flightNumber, Object.assign(data, {
+    upcoming: true,
+    customers: ["Zero to Mastery", "NASA"],
+
+  }));
+}
+
+export function removeOne(id: number) {
+  const aborted = launches.get(id);
+  if(aborted) {
+    aborted.upcoming = false;
+    aborted.success = false;
+  }
+  return aborted;
 }
